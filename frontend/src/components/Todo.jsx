@@ -31,22 +31,29 @@ export default function Todo() {
   return (
     <div>
       <Form
-        setTodos={setTodos}
-        setCurrentPage={setCurrentPage}
-        totalPages={totalPages}
-        setTotalPages={setTotalPages}
-      />
-      <TodoList
         todos={todos}
         setTodos={setTodos}
-        currentPage={currentPage}
-        setTotalPages={setTotalPages}
-      />
-      <PageBox
-        currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         totalPages={totalPages}
+        setTotalPages={setTotalPages}
       />
+      {/* TodoList wird nur angezeigt, wenn todos vorhanden sind */}
+      {todos.length > 0 && (
+        <TodoList
+          todos={todos}
+          setTodos={setTodos}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          setTotalPages={setTotalPages}
+        />
+      )}
+      {totalPages > 1 && (
+        <PageBox
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={totalPages}
+        />
+      )}
     </div>
   );
 }

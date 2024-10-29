@@ -6,6 +6,7 @@ export default function TodoList({
   todos,
   setTodos,
   currentPage,
+  setCurrentPage,
   setTotalPages,
 }) {
   useEffect(() => {
@@ -42,6 +43,7 @@ export default function TodoList({
               todos={todos}
               setTodos={setTodos}
               id={todoItem.id}
+              setCurrentPage={setCurrentPage}
             />
           ) : null // Wenn das Todo nicht die richtige Struktur hat, gebe null zurück
       )}

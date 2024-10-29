@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./form.module.css";
 
 export default function Form({
+  todos,
   setTodos,
   setCurrentPage,
   totalPages,

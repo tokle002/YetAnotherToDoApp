@@ -1,22 +1,23 @@
 .item {
-  width: 500px;
+  width: 90%;
   color: rgb(75, 75, 75);
   font-size: 20px;
   margin: 0 auto;
 }
 .itemName {
   font-weight: bold;
+  text-overflow: ellipsis;
 }
 .line {
   border: 1px solid #f4f4f4;
 }
 .deleteButton {
   float: right;
-  padding: 6px 5px;
+  padding: 6px 9px;
   border: none;
-  background-color: #ae9762;
+  background-color: #00446b;
   color: white;
   margin-top: -5px;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 100%;
 }
