@@ -2,6 +2,8 @@ import { useState } from "react";
 import styles from "./form.module.css";
 
 export default function Form({
+  changes,
+  setChanges,
   todos,
   setTodos,
   setCurrentPage,
@@ -37,7 +39,7 @@ export default function Form({
 
           return updatedTodos;
         });
-
+        setChanges(changes + 1);
         setCurrentPage(totalPages);
 
         setTodo(""); // Eingabefeld zurücksetzen

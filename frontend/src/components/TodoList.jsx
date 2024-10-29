@@ -3,6 +3,8 @@ import styles from "./todolist.module.css";
 import React, { useEffect } from "react";
 
 export default function TodoList({
+  changes,
+  setChanges,
   todos,
   setTodos,
   currentPage,
@@ -12,6 +14,7 @@ export default function TodoList({
   useEffect(() => {
     const loadTodos = async () => {
       try {
+        console.log(changes);
         const response = await fetch(
           `http://localhost:3000/todos?page=${currentPage}`
         );
@@ -29,7 +32,7 @@ export default function TodoList({
     };
 
     loadTodos();
-  }, [currentPage, todos, setTodos, setTotalPages]);
+  }, [changes, currentPage]);
 
   return (
     <div className={styles.list}>
@@ -38,6 +41,8 @@ export default function TodoList({
           // Überprüfe, ob das Todo-Item die richtige Struktur hat
           todoItem && todoItem.text ? (
             <TodoItem
+              changes={changes}
+              setChanges={setChanges}
               key={todoItem.id}
               item={todoItem.text}
               todos={todos}

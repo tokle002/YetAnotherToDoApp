@@ -1,6 +1,8 @@
 import styles from "./todoitem.module.css";
 
 export default function TodoItem({
+  changes,
+  setChanges,
   item,
   todos,
   setTodos,
@@ -29,6 +31,7 @@ export default function TodoItem({
         // Wenn die aktuelle Seite mehr Todos hat als jetzt verfügbar, gehe zur letzten Seite
         setCurrentPage(Math.ceil(updatedTodos.length / 5));
       }
+      setChanges(changes + 1);
     } catch (error) {
       console.error("Fehler beim Löschen des Todos:", error);
     }
