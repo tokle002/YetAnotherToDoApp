@@ -3,11 +3,24 @@ const router = express.Router();
 
 // In-Memory-Datenbank
 let todos = [];
-const todosPerPage = 5;
+const limit = 5;
 
 // Route: Alle Todos abrufen mit Pagination
 router.get("/", (req, res) => {
-  res.json(todos);
+  const page = parseInt(req.query.page) || 1; // Standardwert 1
+
+  // Start- und Endindex basierend auf Seite und Limit
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+
+  const paginatedTodos = todos.slice(startIndex, endIndex);
+
+  res.json({
+    todos: paginatedTodos,
+    totalTodos: todos.length,
+    currentPage: page,
+    totalPages: Math.ceil(todos.length / limit),
+  });
 });
 
 // Route: Todo hinzufügen
